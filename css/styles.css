@@ -1,0 +1,49 @@
+@import "reset.css";
+body {
+  height: 100vh;
+  width: 100vw;
+}
+main {
+  display: flex;
+  height: 90%;
+  width: 100%;
+}
+header {
+  padding: 30px 0;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+}
+header > h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+header > span {
+  position: absolute;
+  left: 15px;
+  align-items: center;
+  color: yellowgreen;
+}
+footer {
+  background-color: gray;
+}
+main div:first-child {
+  width: 30%;
+}
+main div:last-child {
+  width: 70%;
+}
+img {
+  width: 50px;
+  height: 50px;
+}
+.clothes-box {
+  background-color: aqua;
+}
+.clothes-box > div {
+  display: flex;
+  margin: 10px;
+  background-color: white;
+}
