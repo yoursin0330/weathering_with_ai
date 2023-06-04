@@ -100,59 +100,74 @@
     ></script>
 
     <script>
-          printCloset(window.localStorage.closet);
-          function printCloset(){
-            for (let i = 0; i < 9; i++) {
-        document.querySelector(`#clothes_item-${i + 1} span`).innerText = `${
-          closet[Math.floor(i / 3)][i % 3].text
-        }`;
-
-        kakaoImgApiInsert();
-        ${}
-          .querySelector(`#clothes_item-${i + 1} img`)
-          .setAttribute("src", `${closet[Math.floor(i / 3)][i % 3]}`.img);
+      window.addEventListener("storage", function (e) {});
+      $(window).on("storage", function (e) {
+        alert("성공의맛 tv!!!!!!!!!!!");
+        getStoredCloset();
+        // else, event is caused by an update to localStorage, ignore it
+      });
+      //화면에 텍스트, 이미지 출력함
+      function printCloset(closet) {
+        const printCloset = (closet) => {
+          for (let i = 0; i < 9; i++) {
+            document.querySelector(
+              `#clothes_item-${i + 1} span`
+            ).innerText = `${closet[Math.floor(i / 3)][i % 3].text}`;
+            document
+              .querySelector(`#clothes_item-${i + 1} img`)
+              .setAttribute("src", `${closet[Math.floor(i / 3)][i % 3]}`.img);
+          }
+        };
       }
+
+      //sessionStorage에 저장된 값을 가져옴
+      function getStoredCloset() {
+        const closet = JSON.parse(sessionStorage.getItem("storedCloset"));
+        for (let i = 0; i < 3; i++) {
+          for (let j = 0; j < 3; j++) {
+            closet[i][j].img = kakaoApiGetImg(i + j + 1, closet[i][j].text);
           }
-          function kakaoImgApiInsert(idx, searchName) {
-            //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
+        }
+        printCloset(closet);
+      }
 
-            $.ajax({
-              type: "GET",
+      //검색어를 받고, 해당하는 이미지를 검색해 이미지의 주소를 return함
+      function kakaoApiGetImg(searchName) {
+        //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
 
-              url: "https://dapi.kakao.com/v2/search/image",
+        $.ajax({
+          type: "GET",
 
-              headers: {
-                Authorization: "KakaoAK 165585191c1a927d27cbfcbaeb891ce6",
-              },
+          url: "https://dapi.kakao.com/v2/search/image",
 
-              data: {
-                query: searchName,
+          headers: {
+            Authorization: "KakaoAK 165585191c1a927d27cbfcbaeb891ce6",
+          },
 
-                sort: "accuracy", //accuracy(정확도순) 또는 recency(최신순)
+          data: {
+            query: searchName,
 
-                page: 1, //결과 페이지 번호, 1~50 사이의 값, 기본 값 1
+            sort: "accuracy", //accuracy(정확도순) 또는 recency(최신순)
 
-                size: 1, //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
-              },
+            page: 1, //결과 페이지 번호, 1~50 사이의 값, 기본 값 1
 
-              success: function (jdata) {
-                console.log("성공의 맛tv");
-                console.log(jdata);
-                const res_r$(jdata.documents[0])
-                $(jdata.documents).each(function (index) {
-                  $("#clothes_item-"+idx+"img").attr("src", this.image_url);
-                });
-              },
+            size: 1, //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
+          },
 
-              error: function (xhr, textStatus) {
-                console.log(xhr.responseText);
+          success: function (jdata) {
+            console.log(jdata);
+            return jdata.documents[0].image_url;
+          },
 
-                console.log("실패^^");
+          error: function (xhr, textStatus) {
+            console.log(xhr.responseText);
 
-                return;
-              },
-            });
-          }
+            console.log("실패의맛tv");
+
+            return "";
+          },
+        });
+      }
     </script>
   </body>
 </html>
