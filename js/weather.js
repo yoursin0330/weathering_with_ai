@@ -56,7 +56,7 @@ const kakaoApiGetImg = async (searchName) => {
       Authorization: "KakaoAK 165585191c1a927d27cbfcbaeb891ce6",
     },
     data: {
-      query: searchName,
+      query: "BTS",
 
       sort: "accuracy", //accuracy(정확도순) 또는 recency(최신순)
 
