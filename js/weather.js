@@ -3,6 +3,9 @@ const API_KEY = "9c50a548a1a56ed524f605a3ec0f1553";
 //chatGPT openAI API
 let ai_url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
+//kakao 이미지 검색 API
+const search_url = "https://dapi.kakao.com/v2/search/image";
+
 // 사용자의 질문
 let question;
 
@@ -33,6 +36,50 @@ const sendQuestion = (question) => {
       content: question,
     };
   }
+};
+// 여기부터 이미지 검색---------
+const printCloset = (closet) => {
+  for (let i = 0; i < 9; i++) {
+    document.querySelector(`#clothes_item-${i + 1} span`).innerText = `${
+      closet[Math.floor(i / 3)][i % 3].text
+    }`;
+    document
+      .querySelector(`#clothes_item-${i + 1} img`)
+      .setAttribute("src", `${closet[Math.floor(i / 3)][i % 3]}`.img);
+  }
+};
+const kakaoApiGetImg = async (searchName) => {
+  await fetch(search_url, {
+    method: "GET",
+
+    headers: {
+      Authorization: "KakaoAK 165585191c1a927d27cbfcbaeb891ce6",
+    },
+    data: {
+      query: searchName,
+
+      sort: "accuracy", //accuracy(정확도순) 또는 recency(최신순)
+
+      page: 1, //결과 페이지 번호, 1~50 사이의 값, 기본 값 1
+
+      size: 1, //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
+    },
+  })
+    .then((data) => {
+      console.log(data);
+      return data.documents[0].image_url;
+    })
+    .catch((err) => console.log(err));
+  return "";
+};
+const fillClosetImg = (closet) => {
+  //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      closet[i][j].img = kakaoApiGetImg(closet[i][j].text);
+    }
+  }
+  printCloset(closet);
 };
 
 // chatGPT의 답변을 옷 단위로 끊어서 저장
@@ -88,8 +135,10 @@ const answerToKeywords = (answer) => {
     },
   ];
   closet.push(Footwears);
-  sessionStorage.setItem("storedCloset", JSON.stringify(closet));
+  // sessionStorage.setItem("storedCloset", JSON.stringify(closet));
   //sessionStorage에 json 형태로 저장
+
+  fillClosetImg(closet);
 };
 
 // 화면에 chatGPT의 답변 그려주는 함수
