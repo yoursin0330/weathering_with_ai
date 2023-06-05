@@ -21,9 +21,6 @@ let data = [
 // 화면에 뿌려줄 데이터, 질문들
 let questionData;
 
-//옷의 정보를 sessionStorage에 저장하는 곳. 배열 형태로 저장
-//sessionStorage를 사용하는 이유는 값을 계속 저장하고 있지 않기를 바라기 때문!
-
 // 사용자의 질문을 객체를 만들어서 push
 const sendQuestion = (question) => {
   if (question) {
@@ -43,20 +40,24 @@ const printCloset = (closet) => {
     document.querySelector(`#clothes_item-${i + 1} span`).innerText = `${
       closet[Math.floor(i / 3)][i % 3].text
     }`;
-    document
-      .querySelector(`#clothes_item-${i + 1} img`)
-      .setAttribute("src", `${closet[Math.floor(i / 3)][i % 3]}`.img);
+    document.querySelector(`#clothes_item-${i + 1} img`).src =
+      closet[Math.floor(i / 3)][i % 3].img;
   }
 };
-const kakaoApiGetImg = async (searchName) => {
-  await fetch(search_url, {
-    method: "GET",
+const kakaoApiGetImg = (searchName) => {
+  //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
+  let img_url = "";
+  $.ajax({
+    type: "GET",
+
+    url: "https://dapi.kakao.com/v2/search/image",
 
     headers: {
       Authorization: "KakaoAK 165585191c1a927d27cbfcbaeb891ce6",
     },
+
     data: {
-      query: "BTS",
+      query: searchName,
 
       sort: "accuracy", //accuracy(정확도순) 또는 recency(최신순)
 
@@ -64,14 +65,19 @@ const kakaoApiGetImg = async (searchName) => {
 
       size: 1, //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
     },
-  })
-    .then((data) => {
-      console.log(data);
-      return data.documents[0].image_url;
-    })
-    .catch((err) => console.log(err));
-  return "";
+    async: false,
+    success: function (jdata) {
+      img_url = jdata.documents[0].image_url;
+    },
+
+    error: function (xhr, textStatus) {
+      console.log(xhr.responseText);
+      console.log("에러");
+    },
+  });
+  return img_url;
 };
+
 const fillClosetImg = (closet) => {
   //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
   for (let i = 0; i < 3; i++) {
@@ -81,13 +87,12 @@ const fillClosetImg = (closet) => {
   }
   printCloset(closet);
 };
-
 // chatGPT의 답변을 옷 단위로 끊어서 저장
 const answerToKeywords = (answer) => {
-  const closet = [];
+  let closet = [];
   const paragraph = answer.split("\n");
   //Tops
-  const Tops = [
+  let Tops = [
     {
       text: paragraph[3],
       img: "",
@@ -103,7 +108,7 @@ const answerToKeywords = (answer) => {
   ];
   closet.push(Tops);
   //Bottoms
-  const Bottoms = [
+  let Bottoms = [
     {
       text: paragraph[8],
       img: "",
@@ -120,7 +125,7 @@ const answerToKeywords = (answer) => {
 
   closet.push(Bottoms);
   //Footwear
-  const Footwears = [
+  let Footwears = [
     {
       text: paragraph[13],
       img: "",
@@ -135,8 +140,6 @@ const answerToKeywords = (answer) => {
     },
   ];
   closet.push(Footwears);
-  // sessionStorage.setItem("storedCloset", JSON.stringify(closet));
-  //sessionStorage에 json 형태로 저장
 
   fillClosetImg(closet);
 };
