@@ -3,8 +3,8 @@ const API_KEY = "9c50a548a1a56ed524f605a3ec0f1553";
 //chatGPT openAI API
 let ai_url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
-//kakao 이미지 검색 API
-const search_url = "https://dapi.kakao.com/v2/search/image";
+//NAVER 쇼핑 검색 요청 url
+const search_url = "https://openapi.naver.com/v1/search/shop.json";
 
 // 사용자의 질문
 let question;
@@ -57,30 +57,29 @@ const printCloset = (closet) => {
       closet[Math.floor(i / 3)][i % 3].img;
   }
 };
-const kakaoApiGetImg = (searchName) => {
-  //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
+const naverApiGetShoppingImg = (searchName) => {
+  //https://developers.naver.com/docs/serviceapi/search/shopping
   let img_url = "";
   $.ajax({
     type: "GET",
 
-    url: "https://dapi.kakao.com/v2/search/image",
+    url: "https://openapi.naver.com/v1/search/shop.json",
 
     headers: {
-      Authorization: "KakaoAK 165585191c1a927d27cbfcbaeb891ce6",
+      "X-Naver-Client-Id": "3nq94UF7QgXOhg0WOccF",
+      "X-Naver-Client-Secret": "IQUaLwgM9i",
     },
 
     data: {
       query: searchName,
 
-      sort: "accuracy", //accuracy(정확도순) 또는 recency(최신순)
-
-      page: 1, //결과 페이지 번호, 1~50 사이의 값, 기본 값 1
-
-      size: 1, //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
+      display: 1, //한 번에 표시할 검색 결과 개수(기본값: 10, 최댓값: 100)
+      sort: "sim", //정확도순으로 내림차순 정렬
     },
     async: false,
     success: function (jdata) {
-      img_url = jdata.documents[0].image_url;
+      console.log(jdata);
+      img_url = jdata.channel.item[0].image;
     },
 
     error: function (xhr, textStatus) {
@@ -92,10 +91,9 @@ const kakaoApiGetImg = (searchName) => {
 };
 
 const fillClosetImg = (closet) => {
-  //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
-      closet[i][j].img = kakaoApiGetImg(closet[i][j].text);
+      closet[i][j].img = naverApiGetShoppingImg(closet[i][j].text);
     }
   }
   printCloset(closet);
