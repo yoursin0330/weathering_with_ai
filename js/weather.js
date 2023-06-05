@@ -13,8 +13,21 @@ let question;
 let data = [
   {
     role: "system",
-    content:
-      "Tell me what to wear in this weather. Tell me only the items. I want 3 items each, for tops, bottoms, and footwear",
+    content: `이런 날씨에는 어떤 옷을 입으면 좋을 지 알려줘. 상의, 하의, 신발을 각 3개의 아이템씩 알려줬으면 좋겠어. 형식은 아래와 같이 해서 알려줘.
+      상의:
+      1. 
+      2. 
+      3.
+
+      하의:
+      1. 
+      2. 
+      3.
+      
+      신발:
+      1. 
+      2. 
+      3. `,
   },
 ];
 
@@ -94,15 +107,15 @@ const answerToKeywords = (answer) => {
   //Tops
   let Tops = [
     {
+      text: paragraph[1],
+      img: "",
+    },
+    {
+      text: paragraph[2],
+      img: "",
+    },
+    {
       text: paragraph[3],
-      img: "",
-    },
-    {
-      text: paragraph[4],
-      img: "",
-    },
-    {
-      text: paragraph[5],
       img: "",
     },
   ];
@@ -110,15 +123,15 @@ const answerToKeywords = (answer) => {
   //Bottoms
   let Bottoms = [
     {
+      text: paragraph[6],
+      img: "",
+    },
+    {
+      text: paragraph[7],
+      img: "",
+    },
+    {
       text: paragraph[8],
-      img: "",
-    },
-    {
-      text: paragraph[9],
-      img: "",
-    },
-    {
-      text: paragraph[10],
       img: "",
     },
   ];
@@ -127,15 +140,15 @@ const answerToKeywords = (answer) => {
   //Footwear
   let Footwears = [
     {
+      text: paragraph[11],
+      img: "",
+    },
+    {
+      text: paragraph[12],
+      img: "",
+    },
+    {
       text: paragraph[13],
-      img: "",
-    },
-    {
-      text: paragraph[14],
-      img: "",
-    },
-    {
-      text: paragraph[15],
       img: "",
     },
   ];
@@ -196,7 +209,7 @@ function getWeather(position) {
       );
       //gpt에게 날씨 정보 넘기기
       sendQuestion(
-        `Weather here is now ${tempData} celcius and ${weatherData}. Tell me what to wear in this weather, just items.`
+        `현재 여기 날씨는 섭씨 ${tempData}도 에 날씨는 ${weatherData}야. 이런 날씨에는 뭘 입으면 좋을 지 한국어로 알려줘. 추가 설명 없이 딱 아이템만 알려줘. 카테고리에 따라 번호를 매기고, 아이템끼리는 엔터로 구분해줘. `
       );
       apiPost();
     });
