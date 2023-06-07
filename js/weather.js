@@ -3,9 +3,6 @@ const API_KEY = "9c50a548a1a56ed524f605a3ec0f1553";
 //chatGPT openAI API
 let ai_url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
-//NAVER 쇼핑 검색 요청 url
-const search_url = "https://openapi.naver.com/v1/search/shop.json";
-
 // 사용자의 질문
 let question;
 
@@ -48,6 +45,7 @@ const sendQuestion = (question) => {
   }
 };
 // 여기부터 이미지 검색---------
+//이미지와 이름을 화면에 출력하는 역할
 const printCloset = (closet) => {
   for (let i = 0; i < 9; i++) {
     document.querySelector(`#clothes_item-${i + 1} span`).innerText = `${
@@ -57,46 +55,86 @@ const printCloset = (closet) => {
       closet[Math.floor(i / 3)][i % 3].img;
   }
 };
-const naverApiGetShoppingImg = (searchName) => {
-  //https://developers.naver.com/docs/serviceapi/search/shopping
-  let img_url = "";
-  $.ajax({
-    type: "GET",
+function googleLoadClient() {
+  gapi.client.setApiKey("AIzaSyCRwq4vRc5vfUNzlT7_-z0-bKYUv1MYj00");
+  return gapi.client
+    .load(
+      "https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest"
+    )
+    .then(
+      function () {
+        console.log("GAPI client loaded for API");
+      },
+      function (err) {
+        console.error("Error loading GAPI client for API", err);
+      }
+    );
+}
+// Make sure the client is loaded before calling this method.
+function executeImgSearch(searchName) {
+  return gapi.client.search.cse
+    .list({
+      imgColorType: "color",
+      imgSize: "MEDIUM",
+      imgType: "photo",
+      num: 1,
+      q: searchName,
+      safe: "active",
+      searchType: "image",
+    })
+    .then(
+      function (response) {
+        // Handle the results here (response.result has the parsed body).
+        console.log("Response", response);
+        console.log(response.result);
+        return "성공";
+      },
+      function (err) {
+        console.error("Execute error", err);
+      }
+    );
+}
 
-    url: "https://openapi.naver.com/v1/search/shop.json",
+// const googleApiSearchImg = (searchName) => {
+//   //https://developers.google.com/custom-search/v1/
+//   let img_url = "";
+//   $.ajax({
+//     type: "GET",
 
-    headers: {
-      "X-Naver-Client-Id": "3nq94UF7QgXOhg0WOccF",
-      "X-Naver-Client-Secret": "IQUaLwgM9i",
-    },
+//     url: "https://customsearch.googleapis.com/customsearch/v1",
 
-    data: {
-      query: searchName,
+//     headers: {},
 
-      display: 1, //한 번에 표시할 검색 결과 개수(기본값: 10, 최댓값: 100)
-      sort: "sim", //정확도순으로 내림차순 정렬
-    },
-    async: false,
-    success: function (jdata) {
-      console.log(jdata);
-      img_url = jdata.channel.item[0].image;
-    },
+//     data: {
+//       q: searchName,
 
-    error: function (xhr, textStatus) {
-      console.log(xhr.responseText);
-      console.log("에러");
-    },
-  });
-  return img_url;
-};
+//       display: 1, //한 번에 표시할 검색 결과 개수(기본값: 10, 최댓값: 100)
+//       sort: "sim", //정확도순으로 내림차순 정렬
+//     },
+//     async: false,
+//     success: function (jdata) {
+//       console.log(jdata);
+//       img_url = jdata.channel.item[0].image;
+//     },
+
+//     error: function (xhr, textStatus) {
+//       console.log(xhr.responseText);
+//       console.log("에러");
+//     },
+//   });
+//   return img_url;
+// };
 
 const fillClosetImg = (closet) => {
+  gapi.load("client");
+  googleLoadClient();
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
-      closet[i][j].img = naverApiGetShoppingImg(closet[i][j].text);
+      // closet[i][j].img = executeImgSearch(closet[i][j].text);
+      executeImgSearch(closet[i][j].text);
     }
   }
-  printCloset(closet);
+  // printCloset(closet);
 };
 // chatGPT의 답변을 옷 단위로 끊어서 저장
 const answerToKeywords = (answer) => {
