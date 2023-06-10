@@ -125,10 +125,10 @@ const apiPost = async () => {
       console.log(err);
     });
 };
-const getWeather = () => {
+const getWeatherInfo = () => {
   const nowWeather = JSON.parse(localStorage.getItem("nowWeather"));
   const askClothes = `현재 날씨는 섭씨 ${nowWeather.temp}도 에 날씨는 ${nowWeather.weatherName}야. 이런 날씨에는 뭘 입으면 좋을 지 한국어로 알려줘.${nowWeather.moreWeatherInfo} 추가 설명 없이 딱 아이템만 알려줘. 카테고리에 따라 번호를 매기고, 아이템끼리는 엔터로 구분해줘. `;
   sendQuestion(askClothes);
   apiPost();
 };
-getWeather();
+getWeatherInfo();
