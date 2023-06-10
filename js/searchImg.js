@@ -45,7 +45,7 @@ const kakaoApiGetImg = (searchName) => {
   return img_url;
 };
 
-const fillClosetImg = () => {
+export const fillClosetImg = () => {
   //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
   const closet = JSON.parse(sessionStorage.getItem("closet"));
   for (let i = 0; i < 3; i++) {
@@ -55,5 +55,3 @@ const fillClosetImg = () => {
   }
   printCloset(closet);
 };
-
-fillClosetImg();
