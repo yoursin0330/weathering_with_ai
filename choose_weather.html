@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>날씨 기반 옷 추천</title>
+    <link rel="icon" type="image/x-icon" href="img/sun.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <span><img src="img/sun.png" style="height: 40px; width: 40px" /></span>
+      <h1>Clothes Recommendation</h1>
+    </header>
+    <main>
+      <form method="post" action="clothes_recommend.html" id="weather-form">
+        <fieldset>
+          <legend>날씨를 선택하세요</legend>
+          <label for="weather-form__temp">기온</label>
+          <input
+            type="number"
+            name="weather-form__temp"
+            id="weather-form__temp"
+            required
+          />
+          <span>°C</span>
+          <legend>날씨</legend>
+          <input
+            type="radio"
+            name="weather"
+            value="맑음"
+            id="weather-1"
+            required
+          />
+          <label for="weather-1">맑음</label>
+
+          <input
+            type="radio"
+            name="weather"
+            value="구름이 낌"
+            id="weather-2"
+            required
+          />
+          <label for="weather-2">구름이 낌</label>
+
+          <input
+            type="radio"
+            name="weather"
+            value="흐림"
+            id="weather-3"
+            required
+          />
+          <label for="weather-3">흐림</label>
+
+          <input
+            type="radio"
+            name="weather"
+            value="비"
+            id="weather-4"
+            required
+          />
+          <label for="weather-4">비</label>
+
+          <input
+            type="radio"
+            name="weather"
+            value="눈"
+            id="weather-5"
+            required
+          />
+          <label for="weather-5">눈</label>
+
+          <input
+            type="radio"
+            name="weather"
+            value="안개가 낌"
+            id="weather-6"
+            required
+          />
+          <label for="weather-6">안개가 낌</label>
+          <legend>추가 정보</legend>
+          <label for="weather-form__info">
+            <textarea
+              name="weather-form__info"
+              id="weather-form__info"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </label>
+          <input type="submit" value="제출" />
+        </fieldset>
+      </form>
+    </main>
+    <script src="js/weather/chosen_weather.js"></script>
+  </body>
+</html>

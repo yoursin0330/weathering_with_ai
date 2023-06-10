@@ -1,0 +1,22 @@
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.main-screen__btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-screen__btn button {
+  margin: 15px 0;
+  padding: 20px;
+  font-size: 30px;
+  border-radius: 20px;
+  background-color: lightblue;
+}
+.main-screen__btn button:hover {
+  background-color: lightgoldenrodyellow;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>날씨 기반 옷 추천</title>
+    <link rel="icon" type="image/x-icon" href="img/sun.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <span><img src="img/sun.png" style="height: 40px; width: 40px" /></span>
+      <h1>Clothes Recommendation</h1>
+    </header>
+    <main>
+      <div class="weather-box">
+        <div class="weather-icon__box">
+          <img src="img/ellipsis-solid.svg" id="weather-icon" />
+        </div>
+        <div class="weather-info">
+          <span id="city"></span>
+          <span id="weather-temp"><span> - </span>°C</span>
+          <span id="weather-condition"></span>
+        </div>
+        <div id="weather-more">
+          <p>Please authorize location access</p>
+        </div>
+      </div>
+      <div class="clothes-box">
+        <p id="clothes-info"></p>
+        <div class="clothes-box__tops">
+          <div id="clothes_item-1">
+            <img src="img/shirt-solid.svg" alt="" />
+            <span>1</span>
+          </div>
+          <div id="clothes_item-2">
+            <img src="img/shirt-solid.svg" alt="" />
+            <span>2</span>
+          </div>
+          <div id="clothes_item-3">
+            <img src="img/shirt-solid.svg" alt="" />
+            <span>3</span>
+          </div>
+        </div>
+        <div class="clothes-box__bottoms">
+          <div id="clothes_item-4">
+            <img src="img/pants.png" alt="" />
+            <span>1</span>
+          </div>
+          <div id="clothes_item-5">
+            <img src="img/pants.png" alt="" />
+            <span>2</span>
+          </div>
+          <div id="clothes_item-6">
+            <img src="img/pants.png" alt="" />
+            <span>3</span>
+          </div>
+        </div>
+        <div class="clothes-box__footwears">
+          <div id="clothes_item-7">
+            <img src="img/socks-solid.svg" alt="" />
+            <span>1</span>
+          </div>
+          <div id="clothes_item-8">
+            <img src="img/socks-solid.svg" alt="" />
+            <span>2</span>
+          </div>
+          <div id="clothes_item-9">
+            <img src="img/socks-solid.svg" alt="" />
+            <span>3</span>
+          </div>
+        </div>
+        <div class="clothes-box__accessories">
+          <div>
+            <img src="img/glasses-solid.svg" alt="" />
+            <span>1</span>
+          </div>
+          <div>
+            <img src="img/glasses-solid.svg" alt="" />
+            <span>2</span>
+          </div>
+          <div>
+            <img src="img/glasses-solid.svg" alt="" />
+            <span>3</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- <footer>yoursin, 2023</footer> -->
+    <script
+      src="https://kit.fontawesome.com/39e2faebad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/weather/current_loca_weather.js"></script>
+  </body>
+</html>
