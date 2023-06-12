@@ -7,8 +7,6 @@
     <title>weather to you</title>
     <link rel="icon" type="image/x-icon" href="img/sun.png" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Noto+Serif+KR:wght@400;700&display=swap"
       rel="stylesheet"
@@ -21,17 +19,42 @@
     </header>
     <main class="main-screen">
       <div class="main-screen__rec imessage">
+        <p class="from-me">오늘 뭐 입지?</p>
         <p class="from-me">옷 추천받기</p>
-        <p onclick="location.href='./current_weather.html'" class="from-them">
-          현재 위치의 날씨로
-        </p>
-        <p onclick="location.href='./choose_weather.html'" class="from-them">
-          원하는 날씨로
-        </p>
+
+        <p class="from-them">어떤 날씨의 옷을 추천드릴까요?</p>
+        <div class="main-screen__btn">
+          <p
+            onclick="location.href='./current_weather.html'"
+            class="from-them"
+            id="current_weather-btn"
+          >
+            현재 위치의 날씨로
+          </p>
+          <span id="current_weather-icon">
+            <i class="fa-solid fa-circle-check fa-bounce"></i
+          ></span>
+        </div>
+        <div class="main-screen__btn">
+          <p
+            onclick="location.href='./choose_weather.html'"
+            class="from-them"
+            id="choose_weather-btn"
+          >
+            원하는 날씨로
+          </p>
+          <span id="choose_weather-icon"
+            ><i class="fa-solid fa-circle-check fa-bounce"></i
+          ></span>
+        </div>
       </div>
     </main>
     <footer>
       <span>chatGPT를 사용하여 날씨에 맞는 옷을 추천해드립니다.</span>
     </footer>
+    <script
+      src="https://kit.fontawesome.com/39e2faebad.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

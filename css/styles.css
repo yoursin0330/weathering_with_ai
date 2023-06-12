@@ -4,6 +4,9 @@
 @import "components/header.css";
 @import "components/chat-bubble.css";
 @import "components/weather-form.css";
+
+/* screens */
+@import "screens/main-screen.css";
 * {
   font-family: "Noto Serif KR", serif;
   font-weight: 400;
@@ -41,7 +44,8 @@ footer {
 }
 
 footer span {
-  font-size: 0.9rem;
+  font-size: 15px;
+  text-shadow: 0 0 3px gray;
   color: whitesmoke;
 }
 main div {

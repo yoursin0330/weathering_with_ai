@@ -1,0 +1,21 @@
+.main-screen__btn {
+  display: flex;
+}
+.main-screen__btn span {
+  position: relative;
+  display: none;
+}
+.main-screen__btn i {
+  color: #5bb318;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  bottom: 5px;
+  right: -25px;
+}
+#choose_weather-btn:hover + #choose_weather-icon {
+  display: block;
+}
+#current_weather-btn:hover + #current_weather-icon {
+  display: block;
+}
