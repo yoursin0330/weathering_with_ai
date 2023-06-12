@@ -20,8 +20,12 @@ header img {
   width: 40px;
   height: 40px;
 }
-header > span {
+header > a {
   position: absolute;
   left: 15px;
   align-items: center;
+}
+header img:hover {
+  width: 45px;
+  height: 45px;
 }
