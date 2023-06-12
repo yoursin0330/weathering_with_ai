@@ -77,13 +77,51 @@ const kakaoApiGetImg = (searchName) => {
   return img_url;
 };
 
+//google search API
+
+function googleLoadClient() {
+  gapi.client.setApiKey("AIzaSyCRwq4vRc5vfUNzlT7_-z0-bKYUv1MYj00");
+  return gapi.client
+    .load(
+      "https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest"
+    )
+    .then(
+      function () {
+        console.log("GAPI client loaded for API");
+      },
+      function (err) {
+        console.error("Error loading GAPI client for API", err);
+      }
+    );
+}
+// Make sure the client is loaded before calling this method.
+function executeImgSearch(searchName) {
+  return gapi.client.search.cse
+    .list({
+      cx: "c152a4bfde2084c9e",
+      imgType: "stock",
+      q: searchName,
+      searchType: "image",
+    })
+    .then(
+      function (response) {
+        // Handle the results here (response.result has the parsed body).
+        console.log("Response", response);
+      },
+      function (err) {
+        console.error("Execute error", err);
+      }
+    );
+}
 //검색한 이미지를 저장
 const fillClosetImg = () => {
   //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
   const closet = JSON.parse(sessionStorage.getItem("closet"));
+  gapi.load("client");
+  googleLoadClient();
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
-      closet[i][j].img = kakaoApiGetImg(closet[i][j].text);
+      closet[i][j].img = executeImgSearch(closet[i][j].text);
     }
   }
   printCloset(closet);

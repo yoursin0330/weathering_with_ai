@@ -1,35 +1,42 @@
 @import "reset.css";
+
 /* screen */
 @import "screen/main-screen.css";
+@import "screen/choose_weather-screen.css";
 /* components */
+@import "components/header.css";
 @import "components/clothes.css";
+@import "components/weather-box.css";
+* {
+  font-family: "Noto Serif KR", serif;
+  font-weight: 400;
+}
 body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   height: 100vh;
-  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 main {
   display: flex;
-  height: 90%;
   width: 100%;
 }
-header {
-  padding: 30px 0;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid gray;
-}
-header > h1 {
-  font-size: 30px;
-  font-weight: 600;
-}
-header > span {
-  position: absolute;
-  left: 15px;
-  align-items: center;
-  color: yellowgreen;
-}
+
 footer {
   background-color: gray;
 }
@@ -44,10 +51,16 @@ img {
   height: 50px;
 }
 .clothes-box {
-  background-color: aqua;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .clothes-box > div {
   display: flex;
   margin: 10px;
-  background-color: white;
+}
+.clothes-box div div {
+  width: 100px;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 10px;
 }
