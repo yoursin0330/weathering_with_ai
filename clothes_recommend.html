@@ -16,80 +16,22 @@
   </head>
   <body>
     <header>
-      <a href="index.html"><img src="img/sun.png" /></a>
-      <h1>오늘 뭐 입지?</h1>
+      <a href="index.html"><img src="img/sun.png" s /></a>
+      <h1>오늘 뭐 입지</h1>
     </header>
-    <main class="chosen-screen">
-      <div class="weather-box">
-        <div class="weather-icon__box">
-          <img src="img/ellipsis-solid.svg" id="weather-icon" />
-        </div>
-        <div class="weather-info">
-          <span id="weather-info__temp"><span> - </span>°C</span>
+    <main>
+      <div class="weather-box imessage">
+        <p class="from-me">
+          <span>선택한 날씨로 옷 추천해줘!</span>
+        </p>
+
+        <p class="from-me">
+          <span id="weather-temp"><span> - </span>°C</span>
           <span id="weather-condition"></span>
-        </div>
-        <div id="weather-more">
-          <p>Please authorize location access</p>
-        </div>
-      </div>
-      <div class="clothes-box">
-        <p id="clothes-info"></p>
-        <div class="clothes-box__tops">
-          <div id="clothes_item-1">
-            <img src="img/shirt-solid.svg" alt="" />
-            <span>1</span>
-          </div>
-          <div id="clothes_item-2">
-            <img src="img/shirt-solid.svg" alt="" />
-            <span>2</span>
-          </div>
-          <div id="clothes_item-3">
-            <img src="img/shirt-solid.svg" alt="" />
-            <span>3</span>
-          </div>
-        </div>
-        <div class="clothes-box__bottoms">
-          <div id="clothes_item-4">
-            <img src="img/pants.png" alt="" />
-            <span>1</span>
-          </div>
-          <div id="clothes_item-5">
-            <img src="img/pants.png" alt="" />
-            <span>2</span>
-          </div>
-          <div id="clothes_item-6">
-            <img src="img/pants.png" alt="" />
-            <span>3</span>
-          </div>
-        </div>
-        <div class="clothes-box__footwears">
-          <div id="clothes_item-7">
-            <img src="img/socks-solid.svg" alt="" />
-            <span>1</span>
-          </div>
-          <div id="clothes_item-8">
-            <img src="img/socks-solid.svg" alt="" />
-            <span>2</span>
-          </div>
-          <div id="clothes_item-9">
-            <img src="img/socks-solid.svg" alt="" />
-            <span>3</span>
-          </div>
-        </div>
-        <div class="clothes-box__accessories">
-          <div>
-            <img src="img/glasses-solid.svg" alt="" />
-            <span>1</span>
-          </div>
-          <div>
-            <img src="img/glasses-solid.svg" alt="" />
-            <span>2</span>
-          </div>
-          <div>
-            <img src="img/glasses-solid.svg" alt="" />
-            <span>3</span>
-          </div>
-        </div>
+        </p>
+        <p class="from-them">
+          <span id="weather-more">잠시만 기다려 주세요...</span>
+        </p>
       </div>
     </main>
     <!-- <footer>yoursin, 2023</footer> -->
@@ -97,13 +39,12 @@
       src="https://kit.fontawesome.com/39e2faebad.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://apis.google.com/js/api.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"
     ></script>
     <script src="js/weather/print_chosen_weather.js"></script>
-    <script src="js/chatGPT.js"></script>
+    <script src="./js/chatGPT.js"></script>
   </body>
 </html>

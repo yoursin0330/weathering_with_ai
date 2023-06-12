@@ -20,11 +20,14 @@
       <h1>오늘 뭐 입지</h1>
     </header>
     <main class="choose_weather-screen">
-      <form method="post" action="clothes_recommend.html" id="weather-form">
-        <div>
-          <legend>기온을 입력하세요</legend>
-        </div>
-        <div>
+      <form
+        method="post"
+        action="clothes_recommend.html"
+        id="weather-form"
+        class="imessage"
+      >
+        <p class="from-them">기온을 입력하세요</p>
+        <p class="from-me">
           <label for="weather-form__temp">기온</label>
           <input
             type="number"
@@ -33,11 +36,9 @@
             required
           />
           <span>°C</span>
-        </div>
-        <div>
-          <legend>날씨를 선택하세요</legend>
-        </div>
-        <div>
+        </p>
+        <p class="from-them">날씨를 선택하세요</p>
+        <p class="from-them">
           <input
             type="radio"
             name="weather"
@@ -91,21 +92,22 @@
             required
           />
           <label for="weather-6">안개가 낌</label>
-        </div>
-        <div>
-          <legend>추가적으로 요청할 정보가 있다면 적어주세요</legend>
-        </div>
-        <div>
+        </p>
+        <p class="from-them">추가적으로 요청할 정보가 있다면 적어주세요</p>
+        <p class="from-me">
           <label for="weather-form__info">
             <textarea
               name="weather-form__info"
               id="weather-form__info"
-              cols="30"
+              cols="25"
               rows="3"
             ></textarea>
           </label>
-        </div>
-        <input type="submit" value="제출" />
+        </p>
+        <p class="from-them">
+          <span>제출하시겠습니까?</span>
+        </p>
+        <p class="from-me"><input type="submit" value="네" /></p>
       </form>
     </main>
     <script src="https://apis.google.com/js/api.js"></script>
