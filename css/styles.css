@@ -3,10 +3,12 @@
 /* screen */
 @import "screen/main-screen.css";
 @import "screen/choose_weather-screen.css";
+
 /* components */
 @import "components/header.css";
 @import "components/clothes.css";
 @import "components/weather-box.css";
+@import "components/chat-bubble.css";
 * {
   font-family: "Noto Serif KR", serif;
   font-weight: 400;

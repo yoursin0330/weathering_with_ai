@@ -1,10 +1,10 @@
-.main-screen {
+/* .main-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.main-screen__rec {
+} */
+/* .main-screen__rec {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,29 +12,29 @@
   border-radius: 20px;
   width: 150px;
   padding: 20px;
-}
-.main-screen__rec div {
+} */
+/* .main-screen__rec div {
   display: flex;
   justify-content: center;
-}
+} */
 .main-screen__rec div span {
   color: whitesmoke;
   font-size: 25px;
 }
 .main-screen__btn {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
-.main-screen__btn button {
+/* .main-screen__btn button {
   margin: 15px 0;
   padding: 20px;
   font-size: 30px;
   border-radius: 20px;
   border: none;
   background-color: whitesmoke;
-}
+} */
 .main-screen__btn button:hover {
   background: pink;
   opacity: 90%;
