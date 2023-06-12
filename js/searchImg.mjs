@@ -1,7 +1,4 @@
-//kakao 이미지 검색 API
-const search_url = "https://dapi.kakao.com/v2/search/image";
-
-// 여기부터 이미지 검색---------
+//화면에 사진과 텍스트 뿌려주는 역할
 const printCloset = (closet) => {
   for (let i = 0; i < 9; i++) {
     document.querySelector(`#clothes_item-${i + 1} span`).innerText = `${
@@ -11,6 +8,8 @@ const printCloset = (closet) => {
       closet[Math.floor(i / 3)][i % 3].img;
   }
 };
+
+//받아온 옷 이름으로 이미지 검색
 const kakaoApiGetImg = (searchName) => {
   //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
   let img_url = "";
@@ -45,6 +44,7 @@ const kakaoApiGetImg = (searchName) => {
   return img_url;
 };
 
+//검색한 이미지를 저장
 export const fillClosetImg = () => {
   //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
   const closet = JSON.parse(sessionStorage.getItem("closet"));
