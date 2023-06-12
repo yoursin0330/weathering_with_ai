@@ -1,4 +1,4 @@
-const API_KEY = "9c50a548a1a56ed524f605a3ec0f1553";
+const WEATHER_KEY = "9c50a548a1a56ed524f605a3ec0f1553";
 
 function storeWeather(temp, weatherCondition) {
   const nowWeather = {
@@ -12,7 +12,7 @@ function storeWeather(temp, weatherCondition) {
 function getWeather(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
-  const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+  const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_KEY}&units=metric`;
   fetch(weather_url)
     .then((response) => response.json())
     .then((data) => {

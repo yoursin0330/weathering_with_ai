@@ -29,105 +29,6 @@ let data = [
 // 화면에 뿌려줄 데이터, 질문들
 let questionData;
 
-//이미지 검색 관련--------------------------------
-
-//화면에 사진과 텍스트 뿌려주는 역할
-const printCloset = (closet) => {
-  for (let i = 0; i < 9; i++) {
-    document.querySelector(`#clothes_item-${i + 1} span`).innerText = `${
-      closet[Math.floor(i / 3)][i % 3].text
-    }`;
-    document.querySelector(`#clothes_item-${i + 1} img`).src =
-      closet[Math.floor(i / 3)][i % 3].img;
-  }
-};
-
-//받아온 옷 이름으로 이미지 검색
-const kakaoApiGetImg = (searchName) => {
-  //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
-  let img_url = "";
-  $.ajax({
-    type: "GET",
-
-    url: "https://dapi.kakao.com/v2/search/image",
-
-    headers: {
-      Authorization: "KakaoAK 165585191c1a927d27cbfcbaeb891ce6",
-    },
-
-    data: {
-      query: searchName,
-
-      sort: "accuracy", //accuracy(정확도순) 또는 recency(최신순)
-
-      page: 1, //결과 페이지 번호, 1~50 사이의 값, 기본 값 1
-
-      size: 1, //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
-    },
-    async: false,
-    success: function (jdata) {
-      img_url = jdata.documents[0].image_url;
-    },
-
-    error: function (xhr, textStatus) {
-      console.log(xhr.responseText);
-      console.log("에러");
-    },
-  });
-  return img_url;
-};
-
-//google search API
-
-function googleLoadClient() {
-  gapi.client.setApiKey("AIzaSyCRwq4vRc5vfUNzlT7_-z0-bKYUv1MYj00");
-  return gapi.client
-    .load(
-      "https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest"
-    )
-    .then(
-      function () {
-        console.log("GAPI client loaded for API");
-      },
-      function (err) {
-        console.error("Error loading GAPI client for API", err);
-      }
-    );
-}
-// Make sure the client is loaded before calling this method.
-function executeImgSearch(searchName) {
-  return gapi.client.search.cse
-    .list({
-      cx: "c152a4bfde2084c9e",
-      imgType: "stock",
-      q: searchName,
-      searchType: "image",
-    })
-    .then(
-      function (response) {
-        // Handle the results here (response.result has the parsed body).
-        console.log("Response", response);
-      },
-      function (err) {
-        console.error("Execute error", err);
-      }
-    );
-}
-//검색한 이미지를 저장
-const fillClosetImg = () => {
-  //https://developers.kakao.com/tool/rest-api/open/get/v2-search-image
-  const closet = JSON.parse(sessionStorage.getItem("closet"));
-  gapi.load("client");
-  googleLoadClient();
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      closet[i][j].img = executeImgSearch(closet[i][j].text);
-    }
-  }
-  printCloset(closet);
-};
-//이미지 검색 관련-------------------
-
 // 사용자의 질문을 객체를 만들어서 push
 const sendQuestion = (question) => {
   if (question) {
@@ -229,6 +130,5 @@ const getWeatherInfo = async () => {
   const askClothes = `현재 날씨는 섭씨 ${nowWeather.temp}도 에 날씨는 ${nowWeather.weatherName}야. 이런 날씨에는 뭘 입으면 좋을 지 한국어로 알려줘.${nowWeather.moreWeatherInfo} 추가 설명 없이 딱 아이템만 알려줘. 카테고리에 따라 번호를 매기고, 아이템끼리는 엔터로 구분해줘. `;
   sendQuestion(askClothes);
   await apiPost();
-  fillClosetImg();
 };
 getWeatherInfo();

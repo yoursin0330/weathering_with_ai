@@ -1,0 +1,9 @@
+.clothes-box {
+  display: flex;
+  justify-content: center;
+}
+.clothes-box > div {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100px;
+  height: 100%;
+}
