@@ -13,6 +13,20 @@
   bottom: 5px;
   right: -25px;
 }
+#choose_weather-btn {
+  background-color: #ffb84c;
+}
+#choose_weather-btn:before {
+  border-left: 1rem solid #ffb84c;
+}
+
+#current_weather-btn {
+  background-color: #f178b4;
+}
+#current_weather-btn:before {
+  border-left: 1rem solid #f178b4;
+}
+
 #choose_weather-btn:hover + #choose_weather-icon {
   display: block;
 }
