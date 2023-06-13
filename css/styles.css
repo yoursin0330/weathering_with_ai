@@ -8,6 +8,7 @@
 
 /* screens */
 @import "screens/main-screen.css";
+@import "screens/current_weather-screen.css";
 * {
   font-family: "Noto Serif KR", serif;
   font-weight: 400;

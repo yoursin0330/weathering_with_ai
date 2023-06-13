@@ -1,0 +1,6 @@
+#weather-icon__box {
+  background-color: #e3a4c3;
+}
+#weather-icon__box:before {
+  border-left: 1rem solid #e3a4c3;
+}
