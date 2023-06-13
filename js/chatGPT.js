@@ -1,11 +1,11 @@
 //chatGPT openAI API
-let ai_url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
+const ai_url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
 // 사용자의 질문
 let question;
 
 // 질문과 답변 저장
-let data = [
+const data = [
   {
     role: "system",
     content: `이런 날씨에는 어떤 옷을 입으면 좋을 지 알려줘.`,
