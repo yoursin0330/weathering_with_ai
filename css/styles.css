@@ -2,6 +2,7 @@
 
 /* components */
 @import "components/header.css";
+@import "components/footer.css";
 @import "components/chat-bubble.css";
 @import "components/weather-form.css";
 @import "components/waiting.css";

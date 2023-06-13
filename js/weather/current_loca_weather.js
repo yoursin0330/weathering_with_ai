@@ -26,6 +26,7 @@ function getWeather(position) {
       temp.innerText = `${tempData}`;
       weather.innerText = `${weatherData}`;
       city.innerText = data.name;
+      document.querySelector("#weather-icon__box span").classList.add("hidden");
       weatherIcon.setAttribute(
         "src",
         `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`
