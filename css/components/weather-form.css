@@ -2,7 +2,20 @@
   border: none;
   background-color: inherit;
 }
+
 #weather-form input[type="submit"]:hover {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
+}
+
+#weather-form input[type="number"] {
+  border: none;
+  width: 50px;
+  border-radius: 5px;
+}
+#weather-form textarea {
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+  max-width: 200px;
 }
