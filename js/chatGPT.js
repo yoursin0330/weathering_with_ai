@@ -62,4 +62,12 @@ const getWeatherInfo = async () => {
   sendQuestion(askClothes);
   await apiPost();
 };
-getWeatherInfo();
+
+const tempNum = document.querySelector("#weather-temp span");
+
+const callback = () => {
+  getWeatherInfo();
+};
+const observer = new MutationObserver(callback);
+const config = { childList: true };
+observer.observe(tempNum, config);

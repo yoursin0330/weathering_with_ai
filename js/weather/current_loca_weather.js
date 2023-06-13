@@ -9,7 +9,7 @@ function storeWeather(temp, weatherCondition) {
   localStorage.setItem("nowWeather", JSON.stringify(nowWeather));
 }
 
-function getWeather(position) {
+async function getWeather(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
   const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
@@ -23,6 +23,9 @@ function getWeather(position) {
 
       const tempData = Math.floor(data.main.temp);
       const weatherData = data.weather[0].main;
+
+      storeWeather(tempData, weatherData);
+
       temp.innerText = `${tempData}`;
       weather.innerText = `${weatherData}`;
       city.innerText = data.name;
@@ -31,7 +34,6 @@ function getWeather(position) {
         "src",
         `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`
       );
-      storeWeather(tempData, weatherData);
     });
 }
 
