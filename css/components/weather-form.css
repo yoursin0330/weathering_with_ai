@@ -1,13 +1,49 @@
-#weather-form input[type="submit"] {
+/* #weather-form input[type="submit"] {
   border: none;
   background-color: inherit;
   font-family: "SanFrancisco";
   font-size: 1rem;
+  back
 }
 
 #weather-form input[type="submit"]:hover {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
+} */
+#weather-form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#weather-form button {
+  background-color: #ea4c89;
+  border-radius: 10px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#weather-form button:hover,
+#weather-form button:focus {
+  background-color: #f082ac;
+  color: black;
 }
 
 #weather-form input[type="number"] {

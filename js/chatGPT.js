@@ -14,6 +14,8 @@ let data = [
 
 // 화면에 뿌려줄 데이터, 질문들
 let questionData;
+
+const waitingDots = document.querySelector(".waiting");
 // 사용자의 질문을 객체를 만들어서 push
 const sendQuestion = (question) => {
   if (question) {
@@ -32,6 +34,7 @@ const printAnswer = (answer) => {
   const clothesInfo = document.querySelector("#weather-more");
   clothesInfo.classList.add("question");
   clothesInfo.innerText = answer;
+  waitingDots.classList.add("hidden");
   answerToKeywords(answer);
 };
 
