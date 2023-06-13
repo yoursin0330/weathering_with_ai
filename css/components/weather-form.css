@@ -11,13 +11,32 @@
 }
 
 #weather-form input[type="number"] {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: "SanFrancisco";
+  font-size: 1.1rem;
+  text-align: center;
+  margin-left: 5px;
   border: none;
   width: 50px;
   border-radius: 5px;
 }
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 #weather-form textarea {
+  font-family: "SanFrancisco";
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1.1rem;
   margin-top: 5px;
   border: none;
   border-radius: 5px;
   max-width: 200px;
+}
+#weather-form input[type="number"]:focus-within,
+#weather-form textarea:focus-within {
+  outline: none;
 }
