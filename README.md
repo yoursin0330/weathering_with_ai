@@ -29,33 +29,39 @@
 ### 3.1 프로젝트 구조
 
 ```
- ┣ 📂css
- ┃ ┣ 📂components
- ┃ ┃ ┣ 📜alert.css
- ┃ ┃ ┣ 📜chat-bubble.css
- ┃ ┃ ┣ 📜footer.css
- ┃ ┃ ┣ 📜header.css
- ┃ ┃ ┣ 📜waiting.css
- ┃ ┃ ┗ 📜weather-form.css
- ┃ ┣ 📂screens
- ┃ ┃ ┣ 📜current_weather-screen.css
- ┃ ┃ ┗ 📜main-screen.css
- ┃ ┣ 📜reset.css
- ┃ ┗ 📜styles.css
- ┣ 📂img
- ┃ ┗ 📜sun.png
- ┣ 📂js
- ┃ ┣ 📂weather
- ┃ ┃ ┣ 📜chosen_weather.js
- ┃ ┃ ┣ 📜current_loca_weather.js
- ┃ ┃ ┗ 📜print_chosen_weather.js
- ┃ ┗ 📜chatGPT.js
- ┣ 📜.gitattributes
- ┣ 📜choose_weather.html
- ┣ 📜clothes_recommend.html
- ┣ 📜current_weather.html
- ┣ 📜index.html
- ┗ 📜README.md
+│  .gitattributes
+│  choose_weather.html
+│  clothes_recommend.html
+│  current_weather.html
+│  index.html
+│  README.md
+│
+├─css
+│  │  reset.css
+│  │  styles.css
+│  │
+│  ├─components
+│  │      alert.css
+│  │      chat-bubble.css
+│  │      footer.css
+│  │      header.css
+│  │      waiting.css
+│  │      weather-form.css
+│  │
+│  └─screens
+│          current_weather-screen.css
+│          main-screen.css
+│
+├─img
+│      sun.png
+│
+└─js
+    │  chatGPT.js
+    │
+    └─weather
+            chosen_weather.js
+            current_loca_weather.js
+            print_chosen_weather.js
 ```
 
 ### 3.2 개발 기간
