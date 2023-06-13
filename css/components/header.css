@@ -20,12 +20,26 @@ header img {
   width: 40px;
   height: 40px;
 }
+
 header > a {
+  text-decoration: none;
   position: absolute;
+  color: inherit;
   left: 15px;
   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header > a > i {
+  color: whitesmoke;
+  align-items: center;
+  font-size: 20px;
 }
 header img:hover {
   width: 45px;
   height: 45px;
+}
+header i:hover {
+  font-size: 25px;
 }
