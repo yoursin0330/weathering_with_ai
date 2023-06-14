@@ -3,7 +3,10 @@
   display: flex;
   justify-content: center;
 }
-#weather-form button {
+.form-btn {
+  margin: 2px 0;
+}
+.form-btn button {
   background-color: #ea4c89;
   border-radius: 10px;
   border-style: none;
@@ -18,7 +21,7 @@
   list-style: none;
   margin: 0;
   outline: none;
-  padding: 8px 15px;
+  padding: 6px 15px;
   text-align: center;
   text-decoration: none;
   transition: color 100ms;

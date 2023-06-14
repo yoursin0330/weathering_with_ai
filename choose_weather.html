@@ -7,16 +7,11 @@
     <title>오늘 뭐 입지</title>
     <link rel="icon" type="image/x-icon" href="img/sun.png" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Noto+Serif+KR:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://kit.fontawesome.com/39e2faebad.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/39e2faebad.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
@@ -24,77 +19,31 @@
       <h1>오늘 뭐 입지</h1>
     </header>
     <main class="choose_weather-screen">
-      <form
-        method="post"
-        action="clothes_recommend.html"
-        id="weather-form"
-        class="imessage"
-      >
+      <form method="post" action="clothes_recommend.html" id="weather-form" class="imessage">
         <p class="from-them">기온을 입력하세요</p>
         <p class="from-me">
           <label for="weather-form__temp">기온</label>
-          <input
-            type="number"
-            name="weather-form__temp"
-            id="weather-form__temp"
-            required
-          />
+          <input type="number" name="weather-form__temp" id="weather-form__temp" required />
           <span>°C</span>
         </p>
         <p class="from-them">날씨를 선택하세요</p>
         <p class="from-them">
-          <input
-            type="radio"
-            name="weather"
-            value="맑음"
-            id="weather-1"
-            required
-          />
+          <input type="radio" name="weather" value="맑음" id="weather-1" required />
           <label for="weather-1">맑음</label>
 
-          <input
-            type="radio"
-            name="weather"
-            value="구름이 낌"
-            id="weather-2"
-            required
-          />
+          <input type="radio" name="weather" value="구름이 낌" id="weather-2" required />
           <label for="weather-2">구름이 낌</label>
 
-          <input
-            type="radio"
-            name="weather"
-            value="흐림"
-            id="weather-3"
-            required
-          />
+          <input type="radio" name="weather" value="흐림" id="weather-3" required />
           <label for="weather-3">흐림</label>
 
-          <input
-            type="radio"
-            name="weather"
-            value="비"
-            id="weather-4"
-            required
-          />
+          <input type="radio" name="weather" value="비" id="weather-4" required />
           <label for="weather-4">비</label>
 
-          <input
-            type="radio"
-            name="weather"
-            value="눈"
-            id="weather-5"
-            required
-          />
+          <input type="radio" name="weather" value="눈" id="weather-5" required />
           <label for="weather-5">눈</label>
 
-          <input
-            type="radio"
-            name="weather"
-            value="안개가 낌"
-            id="weather-6"
-            required
-          />
+          <input type="radio" name="weather" value="안개가 낌" id="weather-6" required />
           <label for="weather-6">안개가 낌</label>
         </p>
         <p class="from-them">추가적으로 요청할 정보가 있다면 적어주세요</p>
@@ -103,15 +52,15 @@
             <textarea
               name="weather-form__info"
               id="weather-form__info"
-              cols="25"
-              rows="3"
+              cols="35"
+              rows="2"
             ></textarea>
           </label>
         </p>
         <p class="from-them">
           <span>제출하시겠습니까?</span>
         </p>
-        <div>
+        <div class="form-btn">
           <button>네</button>
         </div>
       </form>

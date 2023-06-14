@@ -1,5 +1,6 @@
 const API_KEY = "9c50a548a1a56ed524f605a3ec0f1553";
 
+//localStorage에 현위치 날씨 저장
 function storeWeather(temp, weatherCondition) {
   const nowWeather = {
     temp: temp,
@@ -9,6 +10,7 @@ function storeWeather(temp, weatherCondition) {
   localStorage.setItem("nowWeather", JSON.stringify(nowWeather));
 }
 
+//현 위치의 날씨 가져옴
 async function getWeather(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
