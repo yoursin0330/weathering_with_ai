@@ -1,5 +1,5 @@
 # 오늘 뭐 입지
-![image](https://github.com/yoursin0330/weathering_with_ai/assets/103302201/faab9dd7-5a6e-4fd2-b4cb-179fcade5352)
+![image](https://github.com/yoursin0330/weathering_with_ai/assets/103302201/55e361a5-f92e-4bd0-aecc-2fa9c772c16f)
 
 ## 1. 목표와 기능
 
