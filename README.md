@@ -1,5 +1,5 @@
 # 오늘 뭐 입지
-![image](https://github.com/yoursin0330/weathering_with_ai/assets/103302201/9e7897bd-b543-41e4-8b0f-b7f131f92d8d)
+![image](https://github.com/yoursin0330/weathering_with_ai/assets/103302201/faab9dd7-5a6e-4fd2-b4cb-179fcade5352)
 
 ## 1. 목표와 기능
 
@@ -30,39 +30,12 @@
 ### 3.1 프로젝트 구조
 
 ```
-│  .gitattributes
-│  choose_weather.html
-│  clothes_recommend.html
-│  current_weather.html
-│  index.html
-│  README.md
-│
 ├─css
-│  │  reset.css
-│  │  styles.css
-│  │
 │  ├─components
-│  │      alert.css
-│  │      chat-bubble.css
-│  │      footer.css
-│  │      header.css
-│  │      waiting.css
-│  │      weather-form.css
-│  │
 │  └─screens
-│          current_weather-screen.css
-│          main-screen.css
-│
 ├─img
-│      sun.png
-│
 └─js
-    │  chatGPT.js
-    │
-    └─weather
-            chosen_weather.js
-            current_loca_weather.js
-            print_chosen_weather.js
+   └─weather
 ```
 
 ### 3.2 개발 기간
