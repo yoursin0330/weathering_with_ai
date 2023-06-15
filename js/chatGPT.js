@@ -35,7 +35,6 @@ const printAnswer = (answer) => {
   clothesInfo.classList.add("question");
   clothesInfo.innerText = answer;
   waitingDots.classList.add("hidden");
-  answerToKeywords(answer);
 };
 
 // chatGPT api 요청보내는 함수
@@ -58,11 +57,11 @@ const apiPost = async () => {
 };
 
 //localStorage에 저장된 날씨로 chatGPT에게 질문
-const getWeatherInfo = async () => {
+const getWeatherInfo = () => {
   const nowWeather = JSON.parse(localStorage.getItem("nowWeather"));
   const askClothes = `현재 날씨는 섭씨 ${nowWeather.temp}도 에 날씨는 ${nowWeather.weatherName}야. 이런 날씨에는 뭘 입으면 좋을 지 한국어로 알려줘.${nowWeather.moreWeatherInfo}`;
   sendQuestion(askClothes);
-  await apiPost();
+  apiPost();
 };
 
 // 날씨가 저장되기 전에 getWeatherInfo 사용하는 것 방지
